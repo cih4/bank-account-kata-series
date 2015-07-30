@@ -4,8 +4,8 @@ namespace BankingKata
 {
     public class DebitEntry : ITransaction
     {
-        private readonly DateTime transactionDate;
-        private readonly Money transactionAmount;
+        protected readonly DateTime transactionDate;
+        protected readonly Money transactionAmount;
 
         public DebitEntry(DateTime transactionDate, Money transactionAmount)
         {
