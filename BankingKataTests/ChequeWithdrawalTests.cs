@@ -5,16 +5,16 @@ using NUnit.Framework;
 namespace BankingKataTests
 {
     [TestFixture]
-    class ChequeDebitEntryTests
+    class ChequeWithdrawalTests
     {
         [Test]
-        public void WhenCachingInACheck_TheAmountShouldBeTakenOutOfTheAccount() {
+        public void WhenCashingInACheque_TheAmountShouldBeTakenOutOfTheAccount() {
             // ARRANGE
             var transactionLog = new Ledger();
             var expectedTotal = new Money(-1m);
 
             // ACT
-            transactionLog.Record(new ChequeDebitEntry(DateTime.Now, new Money(1m), 10));
+            transactionLog.Record(new ChequeWithdrawal(DateTime.Now, new Money(1m), new ChequeNumber(10)));
             
             // ASSERT
             var actualTotal = transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));
@@ -22,15 +22,15 @@ namespace BankingKataTests
         }
 
         [Test]
-        public void WhenCachingInTwoChecks_TheSUmOfTheAmountsShouldBeTakenOutOfTheAccount()
+        public void WhenCashingInTwoCheques_TheSUmOfTheAmountsShouldBeTakenOutOfTheAccount()
         {
             // ARRANGE
             var transactionLog = new Ledger();
             var expectedTotal = new Money(-3m);
 
             // ACT
-            transactionLog.Record(new ChequeDebitEntry(DateTime.Now, new Money(1m), 10));
-            transactionLog.Record(new ChequeDebitEntry(DateTime.Now, new Money(2m), 10));
+            transactionLog.Record(new ChequeWithdrawal(DateTime.Now, new Money(1m), new ChequeNumber(10)));
+            transactionLog.Record(new ChequeWithdrawal(DateTime.Now, new Money(2m), new ChequeNumber(10)));
 
             // ASSERT
             var actualTotal = transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));

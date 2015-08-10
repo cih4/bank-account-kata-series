@@ -4,8 +4,8 @@ namespace BankingKata
 {
     public class DebitEntry : ITransaction
     {
-        protected readonly DateTime transactionDate;
-        protected readonly Money transactionAmount;
+        private readonly DateTime transactionDate;
+        private readonly Money transactionAmount;
 
         public DebitEntry(DateTime transactionDate, Money transactionAmount)
         {
@@ -26,7 +26,13 @@ namespace BankingKata
 
         public override string ToString()
         {
-            return string.Format("ATM {0} ({1})", transactionDate.ToString("dd MMM yyyy"), transactionAmount);
+            return "ATM " + GetBaseInformationString();
         }
+
+        protected string GetBaseInformationString()
+        {
+            return string.Format("{0} ({1})", transactionDate.ToString("dd MMM yyyy"), transactionAmount);
+        }
+
     }
 }

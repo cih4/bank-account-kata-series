@@ -27,16 +27,9 @@ namespace BankingKata
             return _transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));
         }
 
-        public void Withdraw(DateTime transactionDate, Money money)
+        public void Withdraw(DebitEntry debitEntry)
         {
-            var debitEntry = new DebitEntry(transactionDate, money);
             _transactionLog.Record(debitEntry);
-        }
-
-        public void ChequeWithdraw(DateTime transactionDate, Money money, int checqueNumber)
-        {
-            var checqueDebitEntry = new ChequeDebitEntry(transactionDate, money, checqueNumber);
-            _transactionLog.Record(checqueDebitEntry);
         }
 
         public void PrintBalance(IPrinter printer)

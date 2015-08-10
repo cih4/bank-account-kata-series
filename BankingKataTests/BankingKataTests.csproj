@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="AccountAcceptanceTests.cs" />
     <Compile Include="AccountTests.cs" />
-    <Compile Include="ChequeDebitEntryTests.cs" />
+    <Compile Include="ChequeWithdrawalTests.cs" />
     <Compile Include="MoneyTests.cs" />
     <Compile Include="PrintBalanceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
