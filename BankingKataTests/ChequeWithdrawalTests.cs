@@ -37,6 +37,12 @@ namespace BankingKataTests
             Assert.That(actualTotal, Is.EqualTo(expectedTotal));
         }
 
-
+        [Test]
+        public void ChequeApplyTo()
+        {
+            var chequeWithdrawal = new ChequeWithdrawal(new DateTime(2001, 1, 1), new Money(1m), new ChequeNumber(10));
+            var chequeWithdrawalString = chequeWithdrawal.ToString();
+            Assert.That(chequeWithdrawalString, Is.EqualTo("CHQ 000010 01 Jan 2001 (£1.00)"));
+        }
     }
 }

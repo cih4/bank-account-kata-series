@@ -43,5 +43,7 @@ namespace BankingKataTests
             var expectedTotal = new Money(-4m);
             Assert.That(actualTotal, Is.EqualTo(expectedTotal));
         }
+
+
     }
 }
